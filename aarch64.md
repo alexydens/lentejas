@@ -13,6 +13,6 @@
 - 16-byte aligned (for function calls)
 - No push/pop pneumonic
 ## Addressing Modes
-- Offset: `[base, #imm]` &harr `dest = *(base + imm)`
-- Pre: `[base, #imm]!` &harr `base += imm`, `dest = *base`
-- Post: `[base], #imm` &harr `dest = *base; base += imm`
+- Offset: `[base, #imm]` &harr; `dest = *(base + imm)`
+- Pre: `[base, #imm]!` &harr; `base += imm`, `dest = *base`
+- Post: `[base], #imm` &harr; `dest = *base; base += imm`
