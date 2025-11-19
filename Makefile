@@ -9,7 +9,15 @@ LD=ld.lld
 
 CFLAGS = -Wall -Wextra -Wpedantic -Werror -std=c11 -ggdb -I$(INC_DIR)
 CFLAGS += -Wno-unused
-CFLAGS += -ffreestanding -fno-stack-protector --target=aarch64-unknown-none
+CFLAGS += --target=aarch64-unknown-elf
+CFLAGS += -ffreestanding
+CLFAGS += -fno-builtin
+CFLAGS += -fno-stack-protector 
+CFLAGS += -fno-omit-frame-pointer
+CFLAGS += -fno-pic
+CFLAGS += -fno-common
+CFLAGS += -mgeneral-regs-only
+CFLAGS += -mno-outline-atomics
 LDFLAGS = -nostdlib -T linker.ld
 
 C_SOURCES = $(wildcard $(SRC_DIR)/*.c)
