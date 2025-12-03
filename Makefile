@@ -12,7 +12,7 @@ CFLAGS += -march=rv64gc
 CFLAGS += -mcmodel=medany
 CFLAGS += -ffreestanding -fno-common -nostdlib -fno-builtin
 CFLAGS += -fno-stack-protector -fno-pie
-LDFLAGS = -z max-page-size=4096 -T linker.ld -nostdlib
+LDFLAGS = -z max-page-size=4096 -T linker.ld -nostdlib --oformat binary
 
 C_SOURCES = $(wildcard $(SRC_DIR)/*.c)
 ASM_SOURCES += $(wildcard $(SRC_DIR)/*.S)
@@ -40,5 +40,5 @@ clean:
 	rm -rf $(BIN_DIR)
 
 test: build
-	qemu-system-riscv64 -machine virt -m 128M -bios none -kernel $(BIN_DIR)/$(PROJECT_NAME) -nographic -serial mon:stdio
-
+	#qemu-system-riscv64 -machine virt -m 128M -bios none -kernel $(BIN_DIR)/$(PROJECT_NAME) -nographic -serial mon:stdio
+	qemu-system-riscv64 -machine virt -m 128M -bios $(BIN_DIR)/$(PROJECT_NAME) -nographic -serial mon:stdio
